@@ -13,11 +13,11 @@ export default function NewIncident() {
     const [description, setDescription] = useState('');
     const [value, setValue] = useState('');
 
-    history = useHistory();
+    const history = useHistory();
 
     const ongId = localStorage.getItem('ongId');
 
-    asyn function handleNewIncident(e) {
+    async function handleNewIncident(e) {
         e.preventDefault();
 
         const data = {
@@ -31,7 +31,7 @@ export default function NewIncident() {
                 headers: {
                     Authorization: ongId,
                 }
-            })
+            });
 
             history.push('/profile');
         } catch (err) {
